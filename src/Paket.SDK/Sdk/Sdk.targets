@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <Target Name="DisplayMessages" BeforeTargets="Build">
-        <Exec Command="dotnet $(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/paket/paket.dll --help" />
+    <!--
+    <UsingTask TaskName="FindFileInParent" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildBinPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <CurrentDirName ParameterType="System.String" Required="true" />
+            <FileToFind ParameterType="System.String" Required="true" />
+            <FileName ParameterType="System.String" Output="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System"/>
+            <Using Namespace="System.IO"/>
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+          Log.LogMessage("FindFileInParent parameters:");
+          Log.LogMessage("CurrentDirName = " + CurrentDirName);
+          Log.LogMessage("FileToFind = " + FileToFind);
+
+          do
+          {  
+            CurrentDirName = Directory.GetParent(CurrentDirName).FullName;
+          }
+          while(CurrentDirName != Directory.GetDirectoryRoot(CurrentDirName) && !File.Exists(CurrentDirName + Path.DirectorySeparatorChar + FileToFind))
+             
+          if(File.Exists(CurrentDirName + Path.DirectorySeparatorChar + FileToFind)) 
+             UserFileName = CurrentDirName + Path.DirectorySeparatorChar + FileToFind;
+             
+          Log.LogMessage("FindUserFile output properties:");
+          Log.LogMessage("UserFileName = " + UserFileName);
+        ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+    -->
+    <PropertyGroup>
+        <PaketRootPath Condition="EXISTS('$(ProjectDir)../paket.dependencies')">$(ProjectDir)../</PaketRootPath>
+        <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../paket.dependencies')">$(ProjectDir)../../</PaketRootPath>
+        <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../../paket.dependencies')">$(ProjectDir)../../../</PaketRootPath>
+        <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../../../paket.dependencies')">$(ProjectDir)../../../../</PaketRootPath>
+        <PaketSdkPath>$(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/</PaketSdkPath>
+        <PaketPath>dotnet $(PaketSdkPath)/paket/paket.dll</PaketPath>
+    </PropertyGroup>
+    
+    <Target Name="Test1" BeforeTargets="Build">
+        <!--<FindFileInParent CurrentDirName="${ProjectDir}" FileToFind="paket.dependencies">
+            <Output PropertyName="PaketRootPath" TaskParameter="FileName" />
+        </FindFileInParent>-->
+        <Message Text="PaketRootPath = $(PaketRootPath)"/>
+        <Error Condition="!Exists('$(PaketRootPath)paket.dependencies')" Text="File not found!"/>
     </Target>
+    <Import Project="$(PaketSdkPath)\targets\Paket.Restore.targets" />
+    <!--<Target Name="DisplayMessages" BeforeTargets="Build">
+        <Exec Command="dotnet $(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/paket/paket.dll -help" />
+    </Target>-->
 </Project>

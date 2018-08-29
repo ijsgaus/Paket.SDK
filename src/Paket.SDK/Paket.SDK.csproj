@@ -19,6 +19,12 @@
       <PackagePath>paket/</PackagePath>
       <Pack>true</Pack>
     </Content>
+    <Content Include="targets\**">
+      <PackagePath>targets/</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
+
+  
 
 </Project>

@@ -1,0 +1,5 @@
+source https://nuget.org/api/v2
+content: none
+
+nuget Newtonsoft.Json redirects: force
+nuget FSharp.Core redirects: force
