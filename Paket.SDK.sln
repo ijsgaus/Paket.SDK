@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{013EF066-0
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestApp", "test\TestApp\TestApp.fsproj", "{2E02C3DA-9868-4424-837A-882A5C1BE2D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC6923CD-0BEA-44B9-B06F-E2E101FE097C}"
+ProjectSection(SolutionItems) = preProject
+	README.MD = README.MD
+	test.cmd = test.cmd
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
