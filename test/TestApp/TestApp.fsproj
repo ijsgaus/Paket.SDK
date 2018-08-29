@@ -1,0 +1,17 @@
+﻿<Project Sdk="Paket.SDK/0.0.1-beta1;Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="NuGet.Config" />
+    </ItemGroup>
+
+</Project>

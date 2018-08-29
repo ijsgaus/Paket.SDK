@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Target Name="DisplayMessages" BeforeTargets="Build">
+        <Exec Command="dotnet $(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/paket/paket.dll --help" />
+    </Target>
+</Project>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <Version>0.0.1-beta1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Sdk\Sdk.props">
+      <PackagePath>Sdk/Sdk.props</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+    <Content Include="Sdk\Sdk.targets">
+      <PackagePath>Sdk/Sdk.targets</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+    <Content Include="paket\**">
+      <PackagePath>paket/</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

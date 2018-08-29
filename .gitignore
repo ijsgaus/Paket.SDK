@@ -1,0 +1,64 @@
+# Bloody frontend
+YouDo.SEO.MiniSape/node_modules
+YouDo.SEO.MiniSape/bower_components
+YouDo.Web.Venus/node_modules
+YouDo.Web.Static/node_modules
+
+# Ignore Visual Studio files
+*.obj
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+*.dbmdl
+*.sln.ide
+[Bb]in
+[Dd]ebug*/
+[Oo]bj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+TestsResult.html
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+[Tt]humbs.db
+
+# Idea
+.idea
+
+# NuGet
+/packages/
+
+# Project speciffic
+Markup/
+Vdr.DatabaseObjects/
+YouDo.iml
+
+# Build
+/artifacts/
+
+.localhistory
+.vs/
+/YouDo.SEO/node_modules
+
+# LogFiles
+/YouDo.Migrations/log/
+
+# MacOS files
+*.DS_Store
+._*
+
