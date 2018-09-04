@@ -37,19 +37,14 @@
         <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../paket.dependencies')">$(ProjectDir)../../</PaketRootPath>
         <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../../paket.dependencies')">$(ProjectDir)../../../</PaketRootPath>
         <PaketRootPath Condition="'$(PaketRootPath)' == '' AND EXISTS('$(ProjectDir)../../../../paket.dependencies')">$(ProjectDir)../../../../</PaketRootPath>
-        <PaketSdkPath>$(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/</PaketSdkPath>
+        <PaketSdkPath>$(MSBuildThisFileDirectory)../</PaketSdkPath>
         <PaketPath>dotnet $(PaketSdkPath)/paket/paket.dll</PaketPath>
     </PropertyGroup>
+
+    <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)../lib/netstandard2.0/Paket.SDK.dll" TaskName="Paket.SDK.PaketRestoreTask" />
     
-    <Target Name="Test1" BeforeTargets="Build">
-        <!--<FindFileInParent CurrentDirName="${ProjectDir}" FileToFind="paket.dependencies">
-            <Output PropertyName="PaketRootPath" TaskParameter="FileName" />
-        </FindFileInParent>-->
-        <Message Text="PaketRootPath = $(PaketRootPath)"/>
-        <Error Condition="!Exists('$(PaketRootPath)paket.dependencies')" Text="File not found!"/>
+    <Target Name="PaketRestore" Condition="'$(PaketRestoreDisabled)' != 'True'" BeforeTargets="_GenerateDotnetCliToolReferenceSpecs;_GenerateProjectRestoreGraphPerFramework;_GenerateRestoreGraphWalkPerFramework;CollectPackageReferences">
+        <PaketRestoreTask />    
     </Target>
-    <Import Project="$(PaketSdkPath)\targets\Paket.Restore.targets" />
-    <!--<Target Name="DisplayMessages" BeforeTargets="Build">
-        <Exec Command="dotnet $(NuGetPackageRoot)/paket.sdk/0.0.1-beta1/paket/paket.dll -help" />
-    </Target>-->
+    
 </Project>

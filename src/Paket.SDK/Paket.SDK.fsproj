@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <Version>0.0.1-beta10</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Sdk\Sdk.props">
+      <PackagePath>Sdk/Sdk.props</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+    <Content Include="Sdk\Sdk.targets">
+      <PackagePath>Sdk/Sdk.targets</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+    <Compile Include="PaketRestoreTask.fs" />
+    <Content Include="dependencies\**">
+      <PackagePath>lib\netstandard2.0\</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.8.166" />
+    <PackageReference Include="Paket.Core" Version="5.177.1" />
+  </ItemGroup>
+
+  
+
+  
+</Project>
