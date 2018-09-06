@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk;Paket.SDK/0.0.1-beta10">
+<Project Sdk="Microsoft.NET.Sdk;Paket.SDK/0.0.1-gamma02">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
